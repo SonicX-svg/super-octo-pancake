@@ -4,16 +4,15 @@ on:
   push:
     branches:
       - main
-      
+      - dev
+
 jobs:
   build-and-push:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-      - name: Login to GitHub
-        uses: github/login@v1
       - name: Build and push image
         run: |
-          docker build -t dockerfile .
-          docker push ${github.token}/dockerfile:latest
+          docker build -t ${GITHUB_TOKEN}/dockerfile .
+          docker push ${GITHUB_TOKEN}/dockerfile:latest
