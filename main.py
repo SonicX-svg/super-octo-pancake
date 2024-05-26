@@ -27,4 +27,4 @@ if st.button("Submit"):
     )
     # english
     score = distilled_student_sentiment_classifier(user_input)
-    st.write(f"Result: {score[0][0]["label"]} {score[0][0]["score"]}")
+    st.write(f"Result: {score[0][0]['label']} {score[0][0]['score']}")
