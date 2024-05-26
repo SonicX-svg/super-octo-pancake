@@ -13,6 +13,13 @@ if parent_dir not in sys.path:
 
 from streamlit.testing.v1 import AppTest
 
+def test_example():
+    # set default_timeout on init
+    at = AppTest.from_file("app.py", default_timeout=30)
+
+    # OR set timeout on each run
+    at.run(timeout=30)
+    
 path_to_main = parent_dir + "/main.py"
 def test_positive():
     at = AppTest.from_file(path_to_main).run()
