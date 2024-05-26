@@ -14,7 +14,7 @@ st.markdown(page_bg_img, unsafe_allow_html=True)
 
 st.title("Text Input")
 
-user_input = st.text_input("Enter your text")
+user_input = st.text_input("Enter your text", "i love you")
 
 if user_input:
     st.write("You entered: ", user_input)
