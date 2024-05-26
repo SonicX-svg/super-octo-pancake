@@ -16,4 +16,4 @@ jobs:
       - name: Build and push image
         run: |
           docker build -t dockerfile .
-          docker push ${{ s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 }}/dockerfile:latest
+          docker push ${github.token}/dockerfile:latest
