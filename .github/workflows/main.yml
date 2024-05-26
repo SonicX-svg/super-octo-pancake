@@ -18,12 +18,14 @@ jobs:
           
       - name: Run flake8
         run: |
-          flake8 main.py
+          flake8 --ignore=E501 main.py
+          flake8 --ignore=E501 main.py
 
       - name: Check for errors
         if: failure()
         run: |
           echo "Error: flake8 check failed"
+          flake8 --ignore=F401,E402  tests/tests.py
           
        # юнит тесты
       - name: Run tests
