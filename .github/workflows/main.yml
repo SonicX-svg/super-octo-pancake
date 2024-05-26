@@ -28,7 +28,6 @@ jobs:
           flake8 --ignore=F401,E402  tests/tests.py
           
        # юнит тесты
-      - name: Run tests
+      - name: Test with pytest
         run: |
-          pytest tests/tests.py
-
+          pytest -vv
