@@ -1,18 +1,32 @@
-name: Docker Build and Push
+name: Test Streamlit App
 
 on:
   push:
     branches:
       - main
-      - dev
 
 jobs:
-  build-and-push:
+  test-streamlit:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-      - name: Build and push image
+        
+      - name: Install dependencies
         run: |
-          docker build -t ${GITHUB_TOKEN}/dockerfile .
-          docker push ${GITHUB_TOKEN}/dockerfile:latest
+          pip install -r requirements.txt     
+          
+      - name: Run flake8
+        run: |
+          flake8 main.py
+
+      - name: Check for errors
+        if: failure()
+        run: |
+          echo "Error: flake8 check failed"
+          
+       # юнит тесты
+      - name: Run tests
+        run: |
+          pytest tests/tests.py
+
